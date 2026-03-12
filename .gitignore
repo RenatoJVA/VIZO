@@ -1,88 +1,56 @@
 # --- Sistema Operativo ---
-# macOS
 .DS_Store
-.AppleDouble
-.LSOverride
-._*
-
-# Windows
 Thumbs.db
-ehthumbs.db
 Desktop.ini
-[Dd]esktop.ini
 
-# Linux
-*~
-.fuse_hidden*
-.directory
-.Trash-*
-
-# --- IDEs y Editores de Código ---
-# VS Code (Ignorar caché local, pero permitir configuraciones de equipo)
-.vscode/*
+# --- IDEs ---
+.vscode/
 !.vscode/settings.json
 !.vscode/tasks.json
 !.vscode/launch.json
 !.vscode/extensions.json
-*.code-workspace
-
-# JetBrains (IntelliJ, WebStorm, PyCharm, etc)
 .idea/
-*.iws
-*.iml
-*.ipr
-
-# Eclipse
-.metadata
-.classpath
-.project
-
-# Archivos temporales de editores (Vim, Nano, etc)
 *.swp
-*.swo
-*.swn
 
-# --- Seguridad y Entorno (¡CRÍTICO!) ---
-# Archivos de variables de entorno
+# --- Frontend (Vue/Vite) ---
+frontend/node_modules/
+frontend/dist/
+frontend/dist-ssr/
+frontend/*.local
+frontend/bun.lockb
+
+# --- Backend (FastAPI/Python) ---
+backend/__pycache__/
+backend/*.py[cod]
+backend/*$py.class
+backend/.venv/
+backend/venv/
+backend/env/
+backend/.pytest_cache/
+backend/.ruff_cache/
+backend/.uv/
+
+# --- VIZO Storage (Backend Data) ---
+# Ignoramos todos los archivos generados y bases de datos locales
+backend/storage/*
+!backend/storage/.gitkeep
+
+# --- Packaging & Distribution (Electron/PyInstaller) ---
+build/
+dist/
+release/
+*.exe
+*.dmg
+*.deb
+*.rpm
+*.zip
+backend/build/
+backend/dist/
+backend/*.spec
+node_modules/
+
+# --- Logs y Otros ---
+*.log
 .env
 .env.local
 .env.*.local
-.env.development.local
-.env.test.local
-.env.production.local
-
-# Claves privadas y certificados
-*.pem
-*.key
-*.cer
-*.p12
-id_rsa
-id_rsa.pub
-
-# --- Logs y Diagnóstico ---
-*.log
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-pnpm-debug.log*
-
-# --- Dependencias y Builds (Comunes) ---
-# Descomenta las secciones que apliquen a tu proyecto:
-
-# Node.js
-# node_modules/
-# dist/
-# build/
-# .npm/
-
-# Python
-# __pycache__/
-# *.py[cod]
-# venv/
-# .venv/
-# .pytest_cache/
-
-# Java
-# target/
-# *.class
-# *.jar
