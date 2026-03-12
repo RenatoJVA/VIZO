@@ -5,6 +5,20 @@
   "main": "electron-main.js",
   "type": "commonjs",
   "private": true,
+  "author": {
+    "name": "Renato Valencia",
+    "email": "renato.vace@gmail.com"
+  },
+  "contributors": [
+    {
+      "name": "Renato Valencia",
+      "email": "renato.vace@gmail.com"
+    },
+    {
+      "name": "Leo",
+      "email": "leo@gmail.com"
+    }
+  ],
   "scripts": {
     "start": "electron .",
     "build:frontend": "cd frontend && bun run build",
@@ -40,8 +54,7 @@
     "linux": {
       "target": [
         "AppImage",
-        "deb",
-        "rpm"
+        "deb"
       ],
       "category": "Science",
       "icon": "frontend/public/favicon.ico",
