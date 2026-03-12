@@ -1,0 +1,61 @@
+{
+  "name": "vizo",
+  "version": "1.0.0",
+  "description": "VIZO - MD Analysis Professional",
+  "main": "electron-main.js",
+  "type": "commonjs",
+  "private": true,
+  "scripts": {
+    "start": "electron .",
+    "build:frontend": "cd frontend && bun run build",
+    "build:backend": "cd backend && uv run pyinstaller vizo-backend.spec",
+    "dist": "electron-builder",
+    "build": "bun run build:frontend && bun run build:backend && bun run dist"
+  },
+  "devDependencies": {
+    "electron": "^41.0.0",
+    "electron-builder": "^26.8.1"
+  },
+  "build": {
+    "appId": "com.vizo.analysis",
+    "productName": "VIZO",
+    "directories": {
+      "output": "release"
+    },
+    "files": [
+      "electron-main.js",
+      "preload.js",
+      "frontend/dist/**/*"
+    ],
+    "win": {
+      "target": "nsis",
+      "icon": "frontend/public/favicon.ico",
+      "extraResources": [
+        {
+          "from": "backend/dist/vizo-backend.exe",
+          "to": "vizo-backend.exe"
+        }
+      ]
+    },
+    "linux": {
+      "target": [
+        "AppImage",
+        "deb",
+        "rpm"
+      ],
+      "category": "Science",
+      "icon": "frontend/public/favicon.ico",
+      "extraResources": [
+        {
+          "from": "backend/dist/vizo-backend",
+          "to": "vizo-backend"
+        }
+      ]
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true
+    }
+  }
+}
+

@@ -1,14 +1,30 @@
 import json
+import os
+import sys
 from pathlib import Path
 from typing import Dict, Any
 from datetime import datetime
 
-STORAGE_BASE = Path("storage")
+def get_storage_path() -> Path:
+    """Returns the base path for storage, adapting to production/desktop environments."""
+    if getattr(sys, 'frozen', False):
+        # Si la app está empaquetada (.exe), usamos AppData/Local/VIZO
+        if os.name == 'nt':
+            base = Path(os.environ.get('LOCALAPPDATA', Path.home())) / "VIZO"
+        else:
+            base = Path.home() / ".vizo"
+    else:
+        # En desarrollo, seguimos usando la carpeta local 'storage'
+        base = Path("storage")
+    
+    base.mkdir(parents=True, exist_ok=True)
+    return base
+
+STORAGE_BASE = get_storage_path()
 JOBS_INDEX = STORAGE_BASE / "jobs_registry.json"
 
 def init_storage():
     """Ensures storage directory and index exist."""
-    STORAGE_BASE.mkdir(exist_ok=True)
     if not JOBS_INDEX.exists():
         with open(JOBS_INDEX, "w") as f:
             json.dump({}, f)

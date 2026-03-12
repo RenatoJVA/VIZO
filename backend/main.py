@@ -211,3 +211,9 @@ async def create_analysis_job(
         "count": len(jobs_started),
         "message": f"Iniciados {len(jobs_started)} análisis independientes."
     }
+
+if __name__ == "__main__":
+    import uvicorn
+    # En producción (empaquetado), corremos en el puerto 8000 por defecto
+    uvicorn.run(app, host="127.0.0.1", port=8000)
+
