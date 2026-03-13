@@ -11,6 +11,7 @@ uv run uvicorn main:app --reload --port 8000
 Run the frontend
 
 ```bash
-cd fronted
+cd frontend
+bun install
 bun run dev
 ```
